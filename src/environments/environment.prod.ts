@@ -1,5 +1,5 @@
 const servicios = 'localhost';
-const protocolo = 'http';
+const protocolo = 'https';
 
 export const environment = {
   production: true,

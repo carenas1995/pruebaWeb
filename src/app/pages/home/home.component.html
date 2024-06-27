@@ -1,3 +1,38 @@
-<p>
-  home works!
-</p>
+div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div style="margin: auto;">
+      <h2><b>Listado de Tecnicos</b></h2>
+      <br>
+      <button class="succesbutton" icon="fa fa-plus" label="Agregar" type="button" pButton (click)="add()"
+        data-toggle="tooltip">Agregar</button>
+      <br><br>
+      <p-table [columns]="columnas" [value]="listData" [paginator]="true" [rows]="10" paginatorPosition="bottom"
+        [loading]="cargando" [responsive]="true" [tableStyle]="{'min-width': '80vw','margin': 'auto'}">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.sort"
+              class="text-center col-header">
+              {{col.header}}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr [pSelectableRow]="row">
+            <td class="block text-center col-column">{{ row.tecnico }}</td>
+            <td class="block text-center col-column">{{ row.sucursal }}</td>
+            <td class="block text-center col-column">{{ row.cantidad }}</td>
+            <td class="block text-center col-column">
+              <button type="button" icon="fa fa-pencil" class="succesbutton" data-toggle="tooltip" title="Editar"
+                pButton (click)="edit(row.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td [attr.colspan]="columnas.length" class="text-center" style="font-size: 1.5em;">No Hay Datos Para Mostrar
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>

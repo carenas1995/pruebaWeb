@@ -19,3 +19,34 @@ body {
 .bodytech {
     margin-top: 10vh;
 }
+
+
+.col-header {
+    border: #000 1px solid;
+    color: #fff;
+    background-color: #0062ff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.col-column {
+    border: 1px solid;
+    text-overflow: ellipsis;
+    background-color: #94bdff;
+    overflow: hidden;
+}
+
+.succesbutton {
+    min-width: 2vw;
+    min-height: 2vw;
+    border-radius: 0.5vw;
+    background: #0062ff;
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+}
+
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-icon {
+    color: #0062ff;
+}
