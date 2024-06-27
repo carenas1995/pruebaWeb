@@ -1,1 +1,21 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    font-size: 1.5em;
+}
+
+.principal {
+    background-color: #0062ff;
+    max-height: 10vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}
+
+.bodytech {
+    margin-top: 10vh;
+}
