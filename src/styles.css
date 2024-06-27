@@ -49,4 +49,5 @@ body {
 .ui-paginator .ui-paginator-page,
 .ui-paginator .ui-paginator-icon {
     color: #0062ff;
+    cursor: pointer;
 }

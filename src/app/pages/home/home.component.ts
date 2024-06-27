@@ -1,5 +1,7 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Tecsucu } from 'src/app/interfaces/tecsucu';
 import { SucursalesService } from 'src/app/services/sucursales.service';
 import { TecnicosService } from 'src/app/services/tecnicos.service';
 import { TecsucuService } from 'src/app/services/tecsucu.service';
@@ -15,7 +17,8 @@ export class HomeComponent implements OnInit {
   columnas: any[] = [];
   listData: any[] = [];
 
-  constructor(private router: Router, private tecsucuService: TecsucuService, private tecnicosService: TecnicosService, private sucursalesService:SucursalesService) { }
+  constructor(private router: Router, private tecsucuService: TecsucuService, private tecnicosService: TecnicosService, private sucursalesService: SucursalesService) {
+  }
 
   ngOnInit() {
     this.cargando = true;
@@ -23,40 +26,53 @@ export class HomeComponent implements OnInit {
     this.columnas = [];
     this.columnas = [
       { field: 'id', header: 'id', sort: false },
-      { field: 'tecnico', header: 'tecnico', sort: false },
-      { field: 'sucursal', header: 'sucursal', sort: false },
-      { field: 'cantidad', header: 'cantidad', sort: false }
+      { field: 'tecnico', header: 'Tecnico', sort: false },
+      { field: 'sucursal', header: 'Sucursal', sort: false },
+      { field: 'cantidad', header: 'Elementos Asignados', sort: false },
+      { field: 'acciones', header: 'Acciones', sort: false }
     ];
     this.cargar();
   }
 
   cargar() {
-    this.tecsucuService.getAll().subscribe(res1 => {
+    this.tecnicosService.getAll().subscribe(res1 => {
+      var list = [];
       for (var r1 of res1) {
-        var data = {
+        var data1: Tecsucu[] = [];
+        for (var r2 of r1.tecsucu) {
+          data1.push(r2);
+        }
+        var data2 = {
           id: r1.id,
-          tecnicoid: r1.tecnico,
-          tecnico: "",
-          sucursalid: r1.sucursal,
+          tecnico: r1.nombre,
+          sucursalid: null,
           sucursal: "",
-          cantidad: 0
+          cantidad: r1.tecsucu.length
         };
-        this.listData.push(data);
+        data2.sucursalid = data1.length > 0 ? data1[0].sucursal : 0;
+        if (!r1.master) {
+          list.push(data2);
+        }
       }
-      this.tecnicosService.getAll().subscribe(res2 => {
-        for(var ld1 of this.listData){
-          ld1.tecnico = res2.find(x => ld1.tecnicoid == x.id).nombre;
-        }
-      }, err => {
-        console.log('Error data');
-      });
+
       this.sucursalesService.getAll().subscribe(res2 => {
-        for(var ld2 of this.listData){
-          ld2.sucursal = res2.find(x => ld2.sucursalid == x.id).nombre;
+        var list2 = [];
+        for (var ld2 of list) {
+          var nombsucu = ld2.sucursalid > 0 ? res2.find(x => ld2.sucursalid == x.id).nombre : "";
+          var data3 = {
+            id: ld2.id,
+            tecnico: ld2.tecnico,
+            sucursal: nombsucu,
+            cantidad: ld2.cantidad
+          };
+          list2.push(data3);
         }
+        this.listData = list2;
+        this.cargando = false;
       }, err => {
         console.log('Error data');
       });
+
     }, err => {
       console.log('Error data');
     });
