@@ -32,10 +32,11 @@ export class AdduserComponent implements OnInit {
     sueldo: 0,
     master: false
   };
-  elemento: Tecelement = {
+  elemento: any = {
     id: 0,
     tecnico: 0,
     element: 0,
+    codigo: "",
     cantidad: 0,
   };
   item: SelectItem = null;
@@ -71,6 +72,7 @@ export class AdduserComponent implements OnInit {
       id: 0,
       tecnico: 0,
       element: 0,
+      codigo: "",
       cantidad: 0
     }
     this.sucursal = {
@@ -161,6 +163,7 @@ export class AdduserComponent implements OnInit {
     var selectitem = this.listaElementos.find(x => x.id == event.value);
     if (!this.listaElementosasig.find(y => y.codigo == selectitem.codigo)) {
       this.elemento.element = selectitem.id;
+      this.elemento.codigo = selectitem.codigo;
       this.elemento.cantidad = 0;
     }
     else {
@@ -211,6 +214,7 @@ export class AdduserComponent implements OnInit {
       id: 0,
       tecnico: 0,
       element: 0,
+      codigo: "",
       cantidad: 0
     }
     this.valedit = false;
@@ -229,8 +233,15 @@ export class AdduserComponent implements OnInit {
     this.valedit = true;
     var l = this.listaElementoscompleta.find(x => x.id == id);
     this.item = { label: l.nombre, value: l.id };
+    var d = this.listaElementosasig.find(y => y.element == l.id);
+    var elemento = {
+      element: this.item.value,
+      tecnico: this.tecnico.id,
+      codigo: l.codigo,
+      cantidad: d ? d.cantidad : 0
+    };
     this.Elementos.push(this.item);
-    this.elemento = { element: this.item.value, tecnico: this.tecnico.id, cantidad: Number(this.listaElementosasig.find(x => x.element == this.item.value).cantidad) };
+    this.elemento = elemento;
   }
 
   submit() {
