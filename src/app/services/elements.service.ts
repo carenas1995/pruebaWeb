@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { Elements } from 'src/app/interfaces/elements';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +21,22 @@ export class ElementsService {
   constructor(private httpClient: HttpClient) { }
 
   getAll() {
-    return this.httpClient.get(this.rutServicio).pipe(map(( res: any ) => res as Element[]));
+    return this.httpClient.get(this.rutServicio).pipe(map(( res: any ) => res as Elements[]));
   }
 
   getById(id: number) {
-    return this.httpClient.get(this.rutServicio + '/' + id).pipe(map(( res: any ) => res as Element));
+    return this.httpClient.get(this.rutServicio + '/' + id).pipe(map(( res: any ) => res as Elements));
   }
 
-  add(r: Element) {
-    return this.httpClient.post(this.rutServicio, r).pipe(map(( res: any ) => res as Element));
+  add(r: Elements) {
+    return this.httpClient.post(this.rutServicio, r).pipe(map(( res: any ) => res as Elements));
   }
 
-  update(r: Element) {
-    return this.httpClient.put(this.rutServicio, r).pipe(map(( res: any ) => res as Element));
+  update(r: Elements) {
+    return this.httpClient.put(this.rutServicio, r).pipe(map(( res: any ) => res as Elements));
   }
 
   DELETE(id: number) {
-    return this.httpClient.delete(this.rutServicio + '/' + id).pipe(map(( res: any ) => res as Element));
+    return this.httpClient.delete(this.rutServicio + '/' + id).pipe(map(( res: any ) => res as Elements));
   }
 }

@@ -2,11 +2,11 @@ import { Tecelement } from "./tecelement";
 import { Tecsucu } from "./tecsucu";
 
 export interface Tecnicos {
-    id?: Number,
+    id?: number,
     nombre: string,
     codigo: string,
-    sueldo: Number,
+    sueldo: number,
     master: boolean,
-    tecsucu:Tecsucu[],
-    tecelement:Tecelement[]
+    tecsucu?:Tecsucu[],
+    tecelement?:Tecelement[]
 }

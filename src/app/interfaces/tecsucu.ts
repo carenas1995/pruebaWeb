@@ -1,5 +1,5 @@
 export interface Tecsucu {
-    id?: Number,
-    tecnico: Number,
-    sucursal: Number
+    id?: number,
+    tecnico: number,
+    sucursal: number
 }

@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tecsucu } from 'src/app/interfaces/tecsucu';
+import { NavService } from 'src/app/services/nav.service';
 import { SucursalesService } from 'src/app/services/sucursales.service';
 import { TecnicosService } from 'src/app/services/tecnicos.service';
 import { TecsucuService } from 'src/app/services/tecsucu.service';
@@ -17,11 +18,11 @@ export class HomeComponent implements OnInit {
   columnas: any[] = [];
   listData: any[] = [];
 
-  constructor(private router: Router, private tecsucuService: TecsucuService, private tecnicosService: TecnicosService, private sucursalesService: SucursalesService) {
+  constructor(private router: Router, private tecnicosService: TecnicosService, private sucursalesService: SucursalesService, private navServicio: NavService) {
   }
 
-  ngOnInit() {
-    this.cargando = true;
+  ngOnInit() {    
+   this.cargando = true;
     this.listData = [];
     this.columnas = [];
     this.columnas = [
@@ -70,11 +71,11 @@ export class HomeComponent implements OnInit {
         this.listData = list2;
         this.cargando = false;
       }, err => {
-        console.log('Error data');
+        this.navServicio.setMesage(3);
       });
 
     }, err => {
-      console.log('Error data');
+      this.navServicio.setMesage(3);
     });
   }
 

@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { principalRoutingModule } from './principal-routing.module';
 import { TableModule } from 'primeng/table';
@@ -18,6 +19,8 @@ import { AdduserComponent } from './adduser/adduser.component';
     HomeComponent,
     AdduserComponent,
   ],
+  providers: [
+    CurrencyPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PrincipalModule { }

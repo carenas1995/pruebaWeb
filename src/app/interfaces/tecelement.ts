@@ -1,6 +1,6 @@
 export interface Tecelement {
-    id?: Number,
-    element: Number,
-    sucursal: Number,
-    cantidad: Number
+    id?: number,
+    tecnico: number,
+    element: number,
+    cantidad: number
 }

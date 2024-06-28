@@ -1,8 +1,8 @@
 import { Tecsucu } from "./tecsucu";
 
 export interface Sucursales {
-    id?: Number,
+    id?: number,
     nombre: string,
     codigo: string,
-    tecsucu:Tecsucu[]
+    tecsucu?:Tecsucu[]
 }

@@ -44,10 +44,83 @@ body {
     color: #fff;
     font-size: large;
     cursor: pointer;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.succesbutton:hover {
+    background-color: #94bdff;
+    color: #000;
 }
 
 .ui-paginator .ui-paginator-page,
 .ui-paginator .ui-paginator-icon {
     color: #0062ff;
     cursor: pointer;
+}
+
+.contenedor {
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 2em;
+    background-color: #fff;
+    padding: 1em;
+}
+
+.subcontenedor {
+    margin-top: 1%;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 2em;
+    background-color: rgb(187, 187, 187);
+    padding: 0.5em;
+}
+
+.ui-dropdown {
+    background-color: #fff;
+    padding: 0.4em !important;
+    border-radius: 0.2em
+}
+
+.ui-dropdown-panel .ui-dropdown-items-wrapper {
+    background-color: #fff;
+}
+
+.ui-dropdown-panel .ui-dropdown-item:hover {
+    background-color: #94bdff;
+}
+
+
+/** -- Notificaciones Globales -- */
+#msgNotificacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    width: 99%;
+    margin: 6px;
+}
+
+#msgNotificacion>.p-messages {
+    border-width: 4px;
+    -webkit-box-shadow: 4px 4px 8px -2px #242424;
+    -moz-box-shadow: 4px 4px 8px -2px #242424;
+    -o-box-shadow: 4px 4px 8px -2px #242424;
+    box-shadow: 4px 4px 8px -2px #242424;
+
+    text-align: center;
+}
+
+.ui-messages {
+    background-color: #ffd900c8;
+}
+
+#msgNotificacion>.p-message.p-message-error .p-message-close {
+    color: #721c24 !important;
+}
+
+#msgNotificacion>.p-message.p-message-error button:hover {
+    background-color: transparent !important;
+}
+
+#msgNotificacion>.p-message.p-message-error button:hover.p-message-close {
+    color: #fff !important;
 }

@@ -1,9 +1,9 @@
 import { Tecelement } from "./tecelement";
 
 export interface Elements {
-    id?: Number,
+    id?: number,
     nombre: string,
     codigo: string,
-    cantidad: Number,
-    tecelement:Tecelement[]
+    cantidad: number,
+    tecelement?:Tecelement[]
 }
